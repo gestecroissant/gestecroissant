@@ -13,6 +13,16 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script>
+
+	function sendContact(frm) {
+		var obj = {name: "online", email: frm.mail.value, source: "online-web" };
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://hooks.zapier.com/hooks/catch/7512213/orxmv2w", true);
+		xhttp.send(JSON.stringify(obj));
+	}
+
+
     </script>
     <link rel="shortcut icon" type="image/png" href="img/line-graph.png" />
     <title>Geste</title>
@@ -240,8 +250,8 @@
         <h2 style="color:white">Taste our new product</h2>
         <p style="color:white">Lorem ipsum text about why you should subscribe to our newsletter blabla. Lorem ipsum text about why you should subscribe to our newsletter blabla. Lorem ipsum text about why you should subscribe to our newsletter blabla.</p>
 
-        <form action="action_page.php">
-            <input type="text" placeholder="Email address" name="mail" required>
+        <form action="javascript:;" method="POST" onsubmit="sendContact(this)">
+            <input type="text" placeholder="Email address" id="mail" name="mail" required>
             <input type="submit" value="Subscribe">
         </form>
 
